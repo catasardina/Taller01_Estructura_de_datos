@@ -20,3 +20,30 @@ void ListaAlumnos::addAlumno(ALumno a){
     }
 
 }
+//Funcion para buscar por id
+Alumno* ListaAlumnos::buscarAlumnoId(string id){
+    Nodo* temp = head;
+}
+//eliminar por id
+bool ListaAlumno::deleteAlumnoId(string id){
+    Nodo* temp = head;
+}
+//mostrar alumnos
+void ListaAlumnos::mostrarAlumnos() const {
+    Nodo* temp = head;
+    //mostramos cada lumno de la lista hasta que se acaben
+    while(temp!= nullptr){
+        cout<< " Alumno: " << temp->alumno.getNombre()<< "Id: "<<temp->alumno.getId()<<"Carrera: "<< temp->alumno.getCarrera()
+        <<"Con fecha de ingreso: "<< temp->alumno.getFechaIngreso(); <<endl
+    tempo = temp->siguiente;
+    }
+}
+ListaAlumno::~ListaAlumno()
+{
+    Nodo* temp head;
+    while(temp!= nullptr){
+        Nodo siguiente = temp-> siguiente;
+        detele temp;
+        temp = siguiente;
+    }
+}
