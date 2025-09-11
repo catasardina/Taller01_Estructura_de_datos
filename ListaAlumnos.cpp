@@ -73,3 +73,14 @@ ListaAlumno::~ListaAlumno()
         temp = siguiente;
     }
 }
+void ListaAlumnos::mostrarPorCarrera(string carrera) const {
+    Nodo* temp = cabeza;
+    cout << "Alumnos de la carrera " << carrera << ":\n";
+    while (temp != nullptr) {
+        if (temp->alumno.getCarrera() == carrera) {
+            cout << "ID: " << temp->alumno.getId()<< ", Nombre: " << temp->alumno.getNombre()<< ", Fecha Ingreso: " << temp->alumno.getFechaIngreso()
+                << endl;
+        }
+        temp = temp->siguiente;
+    }
+}

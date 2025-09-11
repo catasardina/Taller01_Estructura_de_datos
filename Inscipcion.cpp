@@ -5,7 +5,7 @@ ListaInscripciones::ListaInscripciones(){
 }
 void ListaInscripciones::addAlumno(ALumno* alumno, Curso* curso){
     if(alumno == nullptr || curso == nullptr){
-        cout<<"Alumno o curno no validos"<< endl;
+        cout<<"Alumno o curso no validos"<< endl;
         return;
     }
     NodoI* nuevo = new NodoI(alumno,curso)
@@ -57,7 +57,7 @@ void ListaInscripciones::addNota(string idA, string codigoC, float nota){
             }
             return;
         }
-        temo = temo->siguiente;
+        temp = temp->siguiente;
     }
     cout<< "Inscripcion no valida"<<endl;
 }
@@ -71,5 +71,28 @@ void ListaInscripciones::mostrarInscripcion() const{
             }
             cout<<endl;
             temp = temp->siguiente;
+    }
+}
+float ListaInscripciones::promedioAlumno(string idA, string codigoC)const{
+    NodoI* temp = head;
+    while(temp!= nullptr){
+        if(temp-> alumno->getId() == idA && temp->curso->getCodigo()==codigoC){
+            if(temp->cantNotas == 0) return 0.0;
+            float suma = 0;
+            for ( int i = 0; i<temp->cantNotas; i++){
+                suma +=temp->notas[i];
+            }
+            return suma / temp-> cantNotas;
+        }
+        temp = temp->siguiente;
+    }
+    return 0.0;
+}
+ListaInscripciones::~ListaInscripciones(){
+    NodoI* temp = head;
+    while(temp!= nullptr){
+        NodoI* siguiente = temp->siguiente;
+        delete temp;
+        temp = siguiente;
     }
 }
