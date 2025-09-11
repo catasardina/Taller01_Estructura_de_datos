@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include "ListaAlumnos.h";
+#include "ListaAlumnos.h"
 
 ListaAlumnos::ListaAlumnos()[
     head= nullptr;
@@ -23,10 +23,36 @@ void ListaAlumnos::addAlumno(ALumno a){
 //Funcion para buscar por id
 Alumno* ListaAlumnos::buscarAlumnoId(string id){
     Nodo* temp = head;
+    while(temp != nullptr){
+        if(temp -> alumno.getId)==id){
+            //obtiene lo que esta adentro 
+            return &(temp->alumno);
+        }
+        temp = temp -> siguiente;
+
+    }
+    retunr nullptr;//por si no lo encuentra
 }
 //eliminar por id
 bool ListaAlumno::deleteAlumnoId(string id){
     Nodo* temp = head;
+    Nodo* anterior = nullptr;
+    while(temp!= nullptr){
+        if(temp->alumno.getId()==id){
+            if(anterior == nullptr){
+                head = temp -> siguiente;
+
+            }else{
+                anterior-> siguiente = temp->siguiente;
+            }
+            delete temp;
+            return true;
+        }
+        anterior = temp;
+        temp = temp-> siguiente;
+
+    }
+    return false;
 }
 //mostrar alumnos
 void ListaAlumnos::mostrarAlumnos() const {
@@ -34,8 +60,8 @@ void ListaAlumnos::mostrarAlumnos() const {
     //mostramos cada lumno de la lista hasta que se acaben
     while(temp!= nullptr){
         cout<< " Alumno: " << temp->alumno.getNombre()<< "Id: "<<temp->alumno.getId()<<"Carrera: "<< temp->alumno.getCarrera()
-        <<"Con fecha de ingreso: "<< temp->alumno.getFechaIngreso(); <<endl
-    tempo = temp->siguiente;
+        <<"Con fecha de ingreso: "<< temp->alumno.getFechaIngreso() <<endl
+    temp = temp->siguiente;
     }
 }
 ListaAlumno::~ListaAlumno()

@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include "Alumno.h";
+#include "Alumno.h"
 
 //Nodo para la lista enlazada
 struct Nodo{ 
