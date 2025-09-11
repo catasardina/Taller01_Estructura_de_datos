@@ -13,12 +13,13 @@ struct Nodo{
 };
 class ListaAlumnos{
     private:
-    Nodo* head;
+        Nodo* head;
     public:
-    ListaAlumnos();
-    void addAlumno(Alumno a);
-    Alumno* buscarAlumnoId(string id);
-    bool deleteAlumnoId(string id);
-    void mostrarAlumnos() const;
-    ~ListaAlumnos();
+        ListaAlumnos();
+        void addAlumno(Alumno a);
+        Alumno* buscarAlumnoId(string id);
+        bool deleteAlumnoId(string id);
+        void mostrarAlumnos() const;
+        void mostrarPorCarrera(string carrera) const;
+        ~ListaAlumnos();
 }:

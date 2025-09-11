@@ -8,7 +8,7 @@ void ListaInscripciones::addAlumno(ALumno* alumno, Curso* curso){
         cout<<"Alumno o curso no validos"<< endl;
         return;
     }
-    NodoI* nuevo = new NodoI(alumno,curso)
+    NodoI* nuevo = new NodoI(alumno,curso);
     if(head==nullptr){
         head = nuevo;
     }else{
@@ -42,7 +42,7 @@ bool ListaInscripciones::deleteInscripcion(string idA,string codigoC){
 void ListaInscripciones::addNota(string idA, string codigoC, float nota){
     NodoI* temp = head;
     while(temp!= nullptr){
-        if( temp->alumno->getId() == idA && temp->curso.getCodigo==codigoC){
+        if( temp->alumno->getId() == idA && temp->curso->getCodigo()==codigoC){
             if(nota < 1.0 || nota>7.0){
                 cout << "Nota no valida" << endl;
                 return;

@@ -27,6 +27,8 @@ class ListaInscripciones{
         void addNota(string idA, string codigoC, float nota);
         void mostrarInscripcion() const;
         float promedioAlumno(string idA, string codigoC) const;
+        void mostrarCursosDeAlumno(string idAlumno) const;
+        float promedioGeneralAlumno(string idAlumno) const;
         ~ListaInscripciones();
         
 
