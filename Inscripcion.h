@@ -17,4 +17,17 @@ struct NodoI{
         siguiente = nullptr;
     }
 };
-class Lista
+class ListaInscripciones{
+    private:
+        NodoI* head;
+    public:
+        ListaInscripciones();
+        void addAlumno(Alumno* alumno, Curso* curso);
+        bool deleteInscripcion(string idA, string codigoC);
+        void addNota(string idA, string codigoC, float nota);
+        void mostrarInscripcion() const;
+        float promedioAlumno(string idA, string codigoC) const;
+        ~ListaInscripciones();
+        
+
+};
