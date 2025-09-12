@@ -3,7 +3,7 @@
 ListaInscripciones::ListaInscripciones(){
     head = nullptr;
 }
-void ListaInscripciones::addAlumno(ALumno* alumno, Curso* curso){
+void ListaInscripciones::addAlumno(Alumno* alumno, Curso *curso){
     if(alumno == nullptr || curso == nullptr){
         cout<<"Alumno o curso no validos"<< endl;
         return;
@@ -12,7 +12,7 @@ void ListaInscripciones::addAlumno(ALumno* alumno, Curso* curso){
     if(head==nullptr){
         head = nuevo;
     }else{
-        NodoI* temp = cabeza;
+        NodoI* temp = head;
         while(temp->siguiente!=nullptr){
             temp = temp->siguiente;
         }
@@ -25,7 +25,7 @@ bool ListaInscripciones::deleteInscripcion(string idA,string codigoC){
     NodoI* temp = head;
     NodoI* anterior = nullptr;
     while(temp!=nullptr){
-        if(temp->alumno->getId() == idA && temp->curso->getCodigo()==codigoC){
+        if(temp->alumno.getId() == idA && temp->curso.getCodigo()==codigoC){
             if(anterior == nullptr){
                 head = temp->siguiente;
             }else{
@@ -42,7 +42,7 @@ bool ListaInscripciones::deleteInscripcion(string idA,string codigoC){
 void ListaInscripciones::addNota(string idA, string codigoC, float nota){
     NodoI* temp = head;
     while(temp!= nullptr){
-        if( temp->alumno->getId() == idA && temp->curso->getCodigo()==codigoC){
+        if( temp->alumno.getId() == idA && temp->curso.getCodigo()==codigoC){
             if(nota < 1.0 || nota>7.0){
                 cout << "Nota no valida" << endl;
                 return;
@@ -50,8 +50,8 @@ void ListaInscripciones::addNota(string idA, string codigoC, float nota){
             if(temp-> cantNotas < 20){
                 temp-> notas[temp->cantNotas] = nota;
                 temp-> cantNotas++;
-                cout << "Nota " << nota << " agregada a " << temp->alumno->getNombre()
-                    << " en curso " << temp->curso->getNombre() << endl;
+                cout << "Nota " << nota << " agregada a " << temp->alumno.getNombre()
+                    << " en curso " << temp->curso.getNombre() << endl;
             }else{
                 cout<<"Maximo de notas alcanzado"<< endl;
             }
@@ -64,7 +64,7 @@ void ListaInscripciones::addNota(string idA, string codigoC, float nota){
 void ListaInscripciones::mostrarInscripcion() const{
     NodoI* temp = head;
     while(temp!= nullptr){
-        cout << "Alumno: " << temp->alumno->getNombre()<< " Curso: " << temp->curso->getNombre()
+        cout << "Alumno: " << temp->alumno.getNombre()<< " Curso: " << temp->curso.getNombre()
             << " Notas: ";
             for (int i=0 ; i<temp->cantNotas; i++){
                 cout << temp->notas[i];
@@ -76,7 +76,7 @@ void ListaInscripciones::mostrarInscripcion() const{
 float ListaInscripciones::promedioAlumno(string idA, string codigoC)const{
     NodoI* temp = head;
     while(temp!= nullptr){
-        if(temp-> alumno->getId() == idA && temp->curso->getCodigo()==codigoC){
+        if(temp-> alumno.getId() == idA && temp->curso.getCodigo()==codigoC){
             if(temp->cantNotas == 0) return 0.0;
             float suma = 0;
             for ( int i = 0; i<temp->cantNotas; i++){
@@ -88,6 +88,54 @@ float ListaInscripciones::promedioAlumno(string idA, string codigoC)const{
     }
     return 0.0;
 }
+
+void ListaInscripciones::mostrarCursosDeAlumno(string idAlumno) const {
+    cout << "=== Cursos del alumno " << idAlumno << " ===" << endl;
+    NodoI* temp = head;
+    bool encontrado = false;
+    
+    while (temp != nullptr) {
+        if (temp->alumno.getId() == idAlumno) {
+            cout << "- " << temp->curso.getNombre() 
+                << " (Codigo: " << temp->curso.getCodigo() << ")" << endl;
+            encontrado = true;
+        }
+        temp = temp->siguiente;
+    }
+    
+    if (!encontrado) {
+        cout << "El alumno no tiene cursos inscritos." << endl;
+    }
+}
+
+float ListaInscripciones::promedioGeneralAlumno(string idAlumno) const {
+    NodoI* temp = head;
+    float sumaPromedios = 0.0;
+    int contadorCursos = 0;
+    
+    while (temp != nullptr) {
+        if (temp->alumno.getId() == idAlumno) {
+            // Solo considerar cursos que tengan notas
+            if (temp->cantNotas > 0) {
+                float sumaNota = 0.0;
+                for (int i = 0; i < temp->cantNotas; i++) {
+                    sumaNota += temp->notas[i];
+                }
+                float promedioCurso = sumaNota / temp->cantNotas;
+                sumaPromedios += promedioCurso;
+                contadorCursos++;
+            }
+        }
+        temp = temp->siguiente;
+    }
+    
+    if (contadorCursos > 0) {
+        return sumaPromedios / contadorCursos;
+    }
+    
+    return 0.0; // Retorna 0 si no tiene cursos con notas
+}
+
 ListaInscripciones::~ListaInscripciones(){
     NodoI* temp = head;
     while(temp!= nullptr){

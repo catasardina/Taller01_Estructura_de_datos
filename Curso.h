@@ -10,7 +10,7 @@ class Curso{
         string carrera;
         string nombreProfesor;
     public:
-        Curso(string codigo,string nombre, int cantMaxEstudiantes, string carrera, string nombreProfesor){};
+        Curso(string codigo,string nombre, int cantMaxEstudiantes, string carrera, string nombreProfesor);
         string getCodigo()const;
         string getNombre()const;
         int getCantMaxEstudiantes()const;

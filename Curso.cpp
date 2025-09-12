@@ -4,10 +4,10 @@ using namespace std;
 
 Curso::Curso(string codigo, string nombre, int cantMaxEstudiantes,string carrera, string nombreProfesor){
     this -> codigo = codigo;
-    this->nombre = nombre;
-    this->cantMaxEstudiantes= cantMaxEstudiantes;
-    this->carrera = carrera;
-    this->nombreProfesor=nombreProfesor;
+    this -> nombre = nombre;
+    this -> cantMaxEstudiantes= cantMaxEstudiantes;
+    this -> carrera = carrera;
+    this -> nombreProfesor=nombreProfesor;
 }
 string Curso::getCodigo() const{
     return codigo;
@@ -23,7 +23,4 @@ string Curso::getCarrera() const{
 }
 string Curso::getNombreProfesor() const{
     return nombreProfesor;
-}
-Curso::~Curso(){
-    
 }

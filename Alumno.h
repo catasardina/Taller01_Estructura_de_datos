@@ -10,11 +10,11 @@ class Alumno{
         string carrera;
         string fechaIngreso;
     public:
-        Alumno(string id, string nombre, string carrera, string fechaIngreso ){};
+        Alumno(string id, string nombre, string carrera, string fechaIngreso );
         string getId() const;
         string getNombre()const;
         string getCarrera() const;
         string getFechaIngreso()const;
-        ~Alumno();
+        ~Alumno(){};
         
 };
