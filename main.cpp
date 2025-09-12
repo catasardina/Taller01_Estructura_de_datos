@@ -26,9 +26,10 @@ int main(){
             cout << "Bienvenido a gestion de Alumnos" endl;
             break;
         }
-        case 2:
+        case 2:{
             break;
-        case 3:
+        }
+        case 3:{
             cout<< "Bienvenido a Gestion de inscripciones";
             string id;
             string codigo;
@@ -48,6 +49,7 @@ int main(){
                 cout<<"EL alumno o el curso no son validos" endl;
             }
             break;
+        }
         case 4: {
             cout<<" GESTION DE NOTAS" endl;
             string id;
@@ -63,6 +65,29 @@ int main(){
             break;
         }
         case 5:{
+            int op;
+            cout<<"Bienvenido a la gestion de Reportes" <<endl;
+            cout<<"1. Alumnos por carrera" << endl;
+            cout<<"2. Cursos por alumnos" <<endl;
+            cout <<"Ingrese su opcion: ";
+            cin >> op;
+            if(op == 1){
+                string carrera;
+                cout<< "Ingrese La Carrera";
+                cin>> carrera;
+                listaAlumnos.mostrarPorCarrera(carrera);
+            }else if(op ==2{
+                string id;
+                cout<<"Ingrese id Alumno: ";
+                cin>> id;
+                
+            }else if(op==3){
+
+            }else if(op==4){
+
+            }else if(op==5){
+                
+            }
             break;
 
         }
