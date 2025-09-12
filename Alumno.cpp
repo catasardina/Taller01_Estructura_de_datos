@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include "Alumno.h";
+#include "Alumno.h"
 
 Alumno::Alumno(string id, string nombre, string carrera, string fechaIngreso){
     this->id = id;

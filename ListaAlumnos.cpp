@@ -64,7 +64,7 @@ void ListaAlumnos::mostrarAlumnos() const {
     temp = temp->siguiente;
     }
 }
-ListaAlumno::~ListaAlumno()
+ListaAlumnos::~ListaAlumno()
 {
     Nodo* temp head;
     while(temp!= nullptr){
@@ -74,7 +74,7 @@ ListaAlumno::~ListaAlumno()
     }
 }
 void ListaAlumnos::mostrarPorCarrera(string carrera) const {
-    Nodo* temp = cabeza;
+    Nodo* temp = head;
     cout << "Alumnos de la carrera " << carrera << ":\n";
     while (temp != nullptr) {
         if (temp->alumno.getCarrera() == carrera) {
