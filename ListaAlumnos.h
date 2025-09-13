@@ -6,10 +6,7 @@ using namespace std;
 struct Nodo{ 
     Alumno alumno;
     Nodo* siguiente;
-    Nodo(Alumno a){
-        alumno = a
-        siguiente = nullptr;
-    }
+    Nodo(const Alumno& a) : alumno(a), siguiente(nullptr) {}
 };
 class ListaAlumnos{
     private:
@@ -22,4 +19,4 @@ class ListaAlumnos{
         void mostrarAlumnos() const;
         void mostrarPorCarrera(string carrera) const;
         ~ListaAlumnos();
-}:
+};

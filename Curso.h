@@ -16,6 +16,6 @@ class Curso{
         int getCantMaxEstudiantes()const;
         string getCarrera()const;
         string getNombreProfesor()const;
-        ~Curso(){};
+        ~Curso();
 
 };

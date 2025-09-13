@@ -6,16 +6,12 @@ using namespace std;
 struct NodoI{
     Alumno alumno;
     Curso curso;
-    float[20] notas;
+    float notas [20];
     int cantNotas;
     NodoI* siguiente;
 
-    NodoI(ALumno* a, Curso* c){
-        alumno=a;
-        curso = c;
-        cantNotas = 0;
-        siguiente = nullptr;
-    }
+    NodoI(const Alumno* a, const Curso* c)
+        : alumno(*a), curso(*c), cantNotas(0), siguiente(nullptr) {}
 };
 class ListaInscripciones{
     private:

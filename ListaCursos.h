@@ -5,14 +5,11 @@ using namespace std;
 struct NodoC {
     Curso curso;
     NodoC* siguiente;
-    NoodC (Curso c){
-        curso = c;
-        siguiente =nullptr;
-    }
+    NodoC(const Curso& c) : curso(c), siguiente(nullptr) {}
 };
 class ListaCursos{
     private:
-    NocoC* head;
+    NodoC* head;
     public:
     ListaCursos();
     void addCurso(Curso c);

@@ -24,3 +24,5 @@ string Curso::getCarrera() const{
 string Curso::getNombreProfesor() const{
     return nombreProfesor;
 }
+Curso::~Curso() {
+}    

@@ -2,18 +2,18 @@
 using namespace std;
 #include "ListaAlumnos.h"
 
-ListaAlumnos::ListaAlumnos()[
-    head= nullptr;
-]
+ListaAlumnos::ListaAlumnos() {
+    head = nullptr;
+}
 //Funcion para agregar alumnos a la lista 
-void ListaAlumnos::addAlumno(ALumno a){
+void ListaAlumnos::addAlumno(Alumno a){
     Nodo* nuevoAlumno = new Nodo(a);
     if(head == nullptr){
-        head = nuevo;
+        head = nuevoAlumno;
     }else {
         Nodo* temp = head; //recorremos
         while (temp->siguiente !=nullptr){
-            temp = temo-> siguiente;
+            temp = temp-> siguiente;
         }
         temp-> siguiente = nuevoAlumno;
         
@@ -24,17 +24,17 @@ void ListaAlumnos::addAlumno(ALumno a){
 Alumno* ListaAlumnos::buscarAlumnoId(string id){
     Nodo* temp = head;
     while(temp != nullptr){
-        if(temp -> alumno.getId)==id){
+        if(temp -> alumno.getId()==id){
             //obtiene lo que esta adentro 
             return &(temp->alumno);
         }
         temp = temp -> siguiente;
 
     }
-    retunr nullptr;//por si no lo encuentra
-}
+    return nullptr;//por si no lo encuentra
+};
 //eliminar por id
-bool ListaAlumno::deleteAlumnoId(string id){
+bool ListaAlumnos::deleteAlumnoId(string id){
     Nodo* temp = head;
     Nodo* anterior = nullptr;
     while(temp!= nullptr){
@@ -53,23 +53,23 @@ bool ListaAlumno::deleteAlumnoId(string id){
 
     }
     return false;
-}
+};
 //mostrar alumnos
 void ListaAlumnos::mostrarAlumnos() const {
     Nodo* temp = head;
     //mostramos cada lumno de la lista hasta que se acaben
     while(temp!= nullptr){
-        cout<< " Alumno: " << temp->alumno.getNombre()<< "Id: "<<temp->alumno.getId()<<"Carrera: "<< temp->alumno.getCarrera()
-        <<"Con fecha de ingreso: "<< temp->alumno.getFechaIngreso() <<endl
+        cout<< " Alumno: " << temp->alumno.getNombre()<< "- Id: "<<temp->alumno.getId()<<"- Carrera: "<< temp->alumno.getCarrera()
+        <<"- fecha de ingreso: "<< temp->alumno.getFechaIngreso() <<endl;
     temp = temp->siguiente;
     }
 }
-ListaAlumnos::~ListaAlumno()
+ListaAlumnos::~ListaAlumnos()
 {
-    Nodo* temp head;
+    Nodo* temp = head;
     while(temp!= nullptr){
-        Nodo siguiente = temp-> siguiente;
-        detele temp;
+        Nodo* siguiente = temp ->siguiente;
+        delete temp;
         temp = siguiente;
     }
 }
